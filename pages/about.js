@@ -1,7 +1,15 @@
+import Head from "next/head";
+import NavBar from "../components/NavBar";
+
 export default function AboutPage() {
     return (
-        <main>
-            <h1>About</h1>
-        </main>
+        <>
+            <Head>
+                <title> About- My Blog</title>
+            </Head>
+            <main>
+                <h1>About</h1>
+            </main>
+        </>
     )
 }

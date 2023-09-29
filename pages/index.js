@@ -1,17 +1,12 @@
-import Link from "next/link"
+import Head from "next/head";
 
 export default function HomePage() {
     return (
         <>
-            <header>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link href="/about" > About</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+            <Head>
+                <title> My Blog</title>
+                <meta name="description" value="this is my blog"></meta>
+            </Head>
             <main>
                 <h1> My Blog</h1>
             </main>
