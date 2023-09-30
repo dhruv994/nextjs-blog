@@ -1,7 +1,26 @@
 import Head from "next/head";
 import Link from "next/link";
+import { getPosts } from "../lib/post";
 
-export default function HomePage() {
+// export async function getStaticPaths() {
+//     const slugs = await getSlugs();
+//     return {
+//         paths: slugs.map((slug) => ({ params: { slug } })),
+//         fallback: false
+//     };
+// }
+export async function getStaticProps() {
+    const posts = await getPosts();
+    return {
+        props: { posts }
+    }
+}
+
+
+
+export default function HomePage({ posts }) {
+    console.log(posts);
+
     return (
         <>
             <Head>
@@ -10,10 +29,12 @@ export default function HomePage() {
             </Head>
             <main>
                 <h1> My Blog</h1>
-                <ul>
-                    <li>
-                        <Link href="/posts/first-post" >First Post</Link>
+                <ul>{posts.map((post) => (
+                    <li key={post.slug}>
+                        <Link href={`/posts/${post.slug}`}>{post.title}</Link>
                     </li>
+                ))
+                }
                 </ul>
             </main>
         </>
